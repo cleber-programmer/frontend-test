@@ -2,13 +2,39 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-
     <title>R7 FrontEnd Test</title>
-
     <link rel="stylesheet" href="stylesheets/style.css" media="all">
   </head>
   <body>
-      <!-- let's code :D -->
+         
+    <h1 class="r7_heading">ranking</h1>
+    <ul class="r7_people"></ul>
 
-    <script src="javascripts/main.js"></script> 
+    <script id="r7_template" type="text/tmpl">
+      <% for(var i = 0; i < data.length; i++) { %>
+        <li class="r7_person">
+          <img class="r7_picture" src="<%= data[i].picture %>" index="<%= i + 1 %>">
+          <h2 class="r7_name"><%= data[i].name %></h2>
+          <p class="r7_description"><%= data[i].description %></p>
+          <table class="r7_tooltip">
+            <tr>
+              <td class="r7_title-positive">gostam</td>
+              <td class="r7_title-negative">nao gostam</td>
+            </tr>
+            <tr>
+              <td class="r7_rating"><%= data[i].positive %>%</td>
+              <td class="r7_rating"><%= data[i].negative %>%</td>
+            </tr>
+          </table>
+        </li>
+      <% } %>
+    </script>
+
+    <script src="javascripts/main.js"></script>
+    <script>
+      setTimeout(function () {
+        // [].forEach.call(document.querySelectorAll("*"),function(a){a.style.outline="1px solid #"+(~~(Math.random()*(1<<24))).toString(16)});
+      }, 250);
+    </script>
+  </body>
 </html>
